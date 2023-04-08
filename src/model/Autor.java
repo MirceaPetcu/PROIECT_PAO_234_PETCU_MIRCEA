@@ -7,13 +7,11 @@ public class Autor {
     private String nume;
     private LocalDate dataNasterii;
     private String nationalitate;
-    private List<Carte> cartiPublicate;
 
-    public Autor(String nume, LocalDate dataNasterii, String nationalitate, List<Carte> cartiPublicate) {
+    public Autor(String nume, LocalDate dataNasterii, String nationalitate) {
         this.nume = nume;
         this.dataNasterii = dataNasterii;
         this.nationalitate = nationalitate;
-        this.cartiPublicate = cartiPublicate;
     }
 
     public String getNume() {
@@ -40,13 +38,7 @@ public class Autor {
         this.nationalitate = nationalitate;
     }
 
-    public List<Carte> getCartiPublicate() {
-        return cartiPublicate;
-    }
 
-    public void setCartiPublicate(List<Carte> cartiPublicate) {
-        this.cartiPublicate = cartiPublicate;
-    }
 
     @Override
     public String toString() {
@@ -54,7 +46,6 @@ public class Autor {
                 "nume='" + nume + '\'' +
                 ", dataNasterii=" + dataNasterii +
                 ", nationalitate='" + nationalitate + '\'' +
-                ", cartiPublicate=" + cartiPublicate +
                 '}';
     }
 }

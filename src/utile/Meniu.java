@@ -10,7 +10,7 @@ import java.util.Scanner;
 public final class Meniu {
     private static Meniu instance = null;
     private static BibliotecaServiceImpl biblioteca = new BibliotecaServiceImpl();
-    private UtilizatorServiceImpl utilizatorService = new UtilizatorServiceImpl(null, biblioteca);
+    private static UtilizatorServiceImpl utilizatorService = new UtilizatorServiceImpl(null, biblioteca);
 
     private Meniu() {
     }
@@ -24,46 +24,77 @@ public final class Meniu {
 
     public void show() {
         Scanner scanner = new Scanner(System.in);
-        int choice = 0;
-        do {
-            System.out.println("1. Adauga carte in biblioteca");
-            System.out.println("2. Afiseaza cartile din biblioteca");
-            System.out.println("3. Verifica dacă o carte este în bibliotecă");
+        String  choice = "m";
+        while (!choice.equals("x"))
+        {
+            System.out.println("1. Adauga carte in biblioteca.(Tasta a)");
+            System.out.println("2. Afiseaza cartile din biblioteca.(Tasta b)");
+            System.out.println("3. Verifica dacă o carte este în bibliotecă.(Tasta c)");
+            System.out.println("4. Adauga cont utilizator.(Tasta d)");
+            System.out.println("5. Creeaza permis de biblioteca pentru un utilizator.(Tasta e)");
+            System.out.println("6. Rezerva o carte.(Tasta f)");
+            System.out.println("7. Imprumuta o carte.(Tasta g)");
+            System.out.println("8. Afiseaza lista de rezervari a unui utilizator.(Tasta h)");
+            System.out.println("9. Afiseaza istoricul imprumuturilor unui utilizator.(Tasta i)");
+            System.out.println("10. Afiseaza toti utilizatorii. (Tasta j)");
+            System.out.println("11. Gaseste toate cartile de la un autor.(Tasta k)");
+            System.out.println("12. Gaseste toate cartile de la o anumita editura.(Tasta l)");
+            System.out.println("13. Iesire.(Tasta x)");
 
-            choice = scanner.nextInt();
 
+
+            choice = scanner.next();
             switch (choice) {
-                case 1:
+                case "a":
                     int tip = scanner.nextInt();
                     biblioteca.addCarte(tip);
                     break;
-                case 2:
+                case "b":
                     if (biblioteca.getCarti() != null)
                         System.out.println(biblioteca.getCarti());
                     else {
                         System.out.println("Nu exista carti in biblioteca");
                     }
                     break;
-                case 3:
-                    //de corectat
+                case "c":
                     System.out.println("Introduceti numele cartii: ");
-                    Scanner scanner2 = new Scanner(System.in);  // create a scanner object
-                    String numeCarte = scanner2.nextLine().toString();
-                    System.out.println(biblioteca.esteInBiblioteca(numeCarte));
-                    scanner2.close();
+                    Scanner scanner2 = new Scanner(System.in);
+                    String numeCarte = scanner2.next();
+                    if(biblioteca.esteInBiblioteca(numeCarte))
+                        System.out.println("cartea se afla in biblioteca.");
+                    else
+                        System.out.println("cartea nu se afla in biblioteca.");
                     break;
-                case 4:
-                    Scanner scanner3 = new Scanner(System.in);  // create a scanner object
-                    String nume = scanner3.nextLine().toString();
-                    String adresa = scanner3.nextLine().toString();
-                    String nrTelefon = scanner3.nextLine().toString();
+                case "d":
+                    Scanner scanner3 = new Scanner(System.in);
+                    String nume = scanner3.next();
+                    String adresa = scanner3.next();
+                    String nrTelefon = scanner3.next();
                     utilizatorService.addUtilizator(new Utilizator(nume, adresa, nrTelefon, null, null, null));
+                    break;
+                case "e":
+                    break;
+                case "f":
+                    break;
+                case "g":
+                    break;
+                case "h":
+                    break;
+                case "i":
+                    break;
+                case "k":
+                    break;
+                case "l":
+                    break;
+                case "x":
+                    break;
+                case "m":
                     break;
                 default:
                     System.out.println("Optiune invalida!");
                     break;
             }
-        } while (choice < 10);
+        }
     }
 
 

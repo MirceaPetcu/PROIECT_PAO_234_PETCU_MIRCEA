@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public interface UtilizatorService {
     void addUtilizator(Utilizator utilizator);
-    List<Utilizator> getUtilizator();
+    List<Utilizator> getUtilizatori();
     Utilizator getUtilizator(String telefon);
     void imprumutaCarti(List<Carte> carti, String telefon);
     void rezervaCarti(List<Carte> carti, String telefon);

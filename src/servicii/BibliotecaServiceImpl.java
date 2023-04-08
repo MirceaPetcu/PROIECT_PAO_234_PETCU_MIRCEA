@@ -26,39 +26,34 @@ public class BibliotecaServiceImpl implements BibliotecaService {
             case 1:
                 System.out.println("Introduceti date pentru carte");
                 System.out.println("Introduceti datele cartii");
-                String titlu = scanner.nextLine();
+                String titlu = scanner.next();
                 int an = scanner.nextInt();
                 GenCarte genCarte = GenCarte.RAZBOI;
                 TipCarte tipCarte = TipCarte.ROMAN;
-                String numeAutor = scanner.nextLine();
-                String numeEditura = scanner.nextLine();
+                String numeAutor = scanner.next();
+                String numeEditura = scanner.next();
                 Autor a = gasesteAutorDupaNume(numeAutor);
                 Editura e = gasesteEdituraDupaNume(numeEditura);
-                int oka = 1;
-                int oke = 1;
                 if (a == null) {
-                    oka = 0;
+                    System.out.println("Introduceti datele autorului");
                     int an2 = rand.nextInt(201) + 1800;
                     int luna = rand.nextInt(12) + 1;
                     int zi = rand.nextInt(30) + 1;
                     LocalDate data = LocalDate.of(an2, luna, zi);
-                    String nat = scanner.nextLine();
-                    a = new Autor(numeAutor, data, nat, null);
+                    String nat = scanner.next();
+                    a = new Autor(numeAutor, data, nat);
                     addAutor(numeAutor, data, nat);
                 }
 
                 if (e == null) {
-                    oke = 0;
-                    String adresa = scanner.nextLine();
-                    String nrTel = scanner.nextLine();
-                    e = new Editura(numeEditura, adresa, nrTel, null);
+                    System.out.println("Introduceti datele editurii");
+                    String adresa = scanner.next();
+                    String nrTel = scanner.next();
+                    e = new Editura(numeEditura, adresa, nrTel);
                     addEditura(numeEditura, adresa, nrTel);
                 }
                 Carte carte = new Carte(titlu, a, e, genCarte, an, tipCarte, false, null, false);
                 cartiDinBiblioteca.add(carte);
-                a.getCartiPublicate().add(carte);
-                e.getCartiTiparite().put(carte, a);
-                scanner.close();
                 break;
             case 2:
                 GenRevista genRevista = GenRevista.MASINI;
@@ -67,46 +62,39 @@ public class BibliotecaServiceImpl implements BibliotecaService {
                 int nr = scanner.nextInt();
                 String titlu1 = scanner.nextLine();
                 int an1 = scanner.nextInt();
-                String numeAutor1 = scanner.nextLine();
-                String numeEditura1 = scanner.nextLine();
+                String numeAutor1 = scanner.next();
+                String numeEditura1 = scanner.next();
                 Autor a1 = gasesteAutorDupaNume(numeAutor1);
                 Editura e1 = gasesteEdituraDupaNume(numeEditura1);
-                int oka1 = 1;
-                int oke1 = 1;
                 if (a1 == null) {
-                    oka1 = 0;
                     int an2 = rand.nextInt(201) + 1800;
                     int luna = rand.nextInt(12) + 1;
                     int zi = rand.nextInt(30) + 1;
                     LocalDate data = LocalDate.of(an2, luna, zi);
                     String nat = scanner.nextLine();
-                    a1 = new Autor(numeAutor1, data, nat, null);
+                    a1 = new Autor(numeAutor1, data, nat);
                     addAutor(numeAutor1, data, nat);
                 }
 
                 if (e1 == null) {
-                    oke1 = 0;
-                    String adresa = scanner.nextLine();
-                    String nrTel = scanner.nextLine();
-                    e1 = new Editura(numeEditura1, adresa, nrTel, null);
+                    String adresa = scanner.next();
+                    String nrTel = scanner.next();
+                    e1 = new Editura(numeEditura1, adresa, nrTel);
                     addEditura(numeEditura1, adresa, nrTel);
                 }
                 Revista revista = new Revista(titlu1,a1,e1,GenCarte.DRAMA,an1,TipCarte.ROMAN,false,null,false,genRevista,nr);
                 cartiDinBiblioteca.add(revista);
-                a1.getCartiPublicate().add(revista);
-                e1.getCartiTiparite().put(revista, a1);
-                scanner.close();
                 break;
             case 3:
                 Dificultate dificultate = Dificultate.MEDIE;
                 System.out.println("Introduceti date pentru carte");
                 System.out.println("Introduceti datele cartii");
-                String materie = scanner.nextLine();
-                String domeniu = scanner.nextLine();
-                String titlu2 = scanner.nextLine();
+                String materie = scanner.next();
+                String domeniu = scanner.next();
+                String titlu2 = scanner.next();
                 int an2 = scanner.nextInt();
-                String numeAutor2 = scanner.nextLine();
-                String numeEditura2 = scanner.nextLine();
+                String numeAutor2 = scanner.next();
+                String numeEditura2 = scanner.next();
                 Autor a2 = gasesteAutorDupaNume(numeAutor2);
                 Editura e2 = gasesteEdituraDupaNume(numeEditura2);
                 if (a2 == null) {
@@ -114,22 +102,19 @@ public class BibliotecaServiceImpl implements BibliotecaService {
                     int luna = rand.nextInt(12) + 1;
                     int zi = rand.nextInt(30) + 1;
                     LocalDate data = LocalDate.of(an3, luna, zi);
-                    String nat = scanner.nextLine();
-                    a2 = new Autor(numeAutor2, data, nat, null);
+                    String nat = scanner.next();
+                    a2 = new Autor(numeAutor2, data, nat);
                     addAutor(numeAutor2, data, nat);
                 }
 
                 if (e2 == null) {
-                    String adresa = scanner.nextLine();
-                    String nrTel = scanner.nextLine();
-                    e2 = new Editura(numeEditura2, adresa, nrTel, null);
+                    String adresa = scanner.next();
+                    String nrTel = scanner.next();
+                    e2 = new Editura(numeEditura2, adresa, nrTel);
                     addEditura(numeEditura2, adresa, nrTel);
                 }
                 Manual manual = new Manual(titlu2,a2,e2,GenCarte.DRAMA,an2,TipCarte.ROMAN,false,null,false,materie,domeniu,dificultate);
                 cartiDinBiblioteca.add(manual);
-                a2.getCartiPublicate().add(manual);
-                e2.getCartiTiparite().put(manual,a2);
-                scanner.close();
                 break;
             default:
                 break;
@@ -176,14 +161,18 @@ public class BibliotecaServiceImpl implements BibliotecaService {
 
     @Override
     public void addAutor(String nume, LocalDate dateNasteri, String nationalitate) {
-        Autor autor = new Autor(nume, dateNasteri, nationalitate, null);
+        Autor autor = new Autor(nume, dateNasteri, nationalitate);
+        if (autori == null)
+            autori = new HashSet<Autor>();
         if (gasesteAutorDupaNume(nume) == null)
             autori.add(autor);
     }
 
     @Override
     public void addEditura(String nume, String adresa, String nrTelefon) {
-        Editura editura = new Editura(nume, adresa, nrTelefon, null);
+        Editura editura = new Editura(nume, adresa, nrTelefon);
+        if (edituri == null)
+            edituri = new HashSet<Editura>();
         if (gasesteEdituraDupaNume(nume) == null)
             edituri.add(editura);
     }
@@ -191,6 +180,8 @@ public class BibliotecaServiceImpl implements BibliotecaService {
     @Override
     public Autor gasesteAutorDupaNume(String nume) {
         Autor a = null;
+        if (autori == null)
+            return null;
         for (var autor : autori) {
             if (autor.getNume().equals(nume))
                 a = autor;
@@ -201,6 +192,8 @@ public class BibliotecaServiceImpl implements BibliotecaService {
     @Override
     public Editura gasesteEdituraDupaNume(String nume) {
         Editura e = null;
+        if ( edituri == null)
+            return e;
         for (var editura : edituri)
             if (editura.getNume().equals(nume))
                 e = editura;

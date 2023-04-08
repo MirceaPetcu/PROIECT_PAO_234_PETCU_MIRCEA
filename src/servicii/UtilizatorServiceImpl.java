@@ -25,7 +25,7 @@ public class UtilizatorServiceImpl implements UtilizatorService {
     }
 
     @Override
-    public List<Utilizator> getUtilizator() {
+    public List<Utilizator> getUtilizatori() {
         try {
             if (utilizatori == null)
                 throw new NuExistaUtilizatori("nu exista utilizatori");

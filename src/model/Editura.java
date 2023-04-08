@@ -6,13 +6,11 @@ public class Editura {
     private String nume;
     private String adresa;
     private String nrTelefon;
-    private Map<Carte,Autor> cartiTiparite;
 
-    public Editura(String nume, String adresa, String nrTelefon, Map<Carte, Autor> cartiTiparite) {
+    public Editura(String nume, String adresa, String nrTelefon) {
         this.nume = nume;
         this.adresa = adresa;
         this.nrTelefon = nrTelefon;
-        this.cartiTiparite = cartiTiparite;
     }
 
     public String getNume() {
@@ -39,13 +37,6 @@ public class Editura {
         this.nrTelefon = nrTelefon;
     }
 
-    public Map<Carte, Autor> getCartiTiparite() {
-        return cartiTiparite;
-    }
-
-    public void setCartiTiparite(Map<Carte, Autor> cartiTiparite) {
-        this.cartiTiparite = cartiTiparite;
-    }
 
     @Override
     public String toString() {
@@ -53,7 +44,6 @@ public class Editura {
                 "nume='" + nume + '\'' +
                 ", adresa='" + adresa + '\'' +
                 ", nrTelefon='" + nrTelefon + '\'' +
-                ", cartiTiparite=" + cartiTiparite +
                 '}';
     }
 }
