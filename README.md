@@ -3,13 +3,21 @@
 
 Tipuri de obiecte:
     1. Carte- clasa folosita pentru stocarea informatiilor despre carti
+    
     2. Utilizator – informatii despre cititorul care urmeaza sa imprumute carti
+    
     3. Rezervare -  clasa utilizata pentru pastrarea informatiilor despre o eventuala rezervare a unui cititor asupra unei sau mai multor carti
+    
     4. Imprumut – clasa ce pastreaza informatiile imprumutului unei sau mai multor carti de catre un utilizator
+    
     5. Editura -  clasa utilizata pentru pastrarea informatiilor despre o editura ce publica carti
+    
     6. Autor-  clasa utilizata pentru pastrarea informatiilor despre unui anumit autor de carti
+    
     7. Permis de biblioteca -  clasa ce incapsuleaza informatiile unui utilizator, care in plus ii ofera dreptul acestuia sa imprumute si sa rezerve carti
+    
     8. Manual – clasa ce stocheaza informatii despre o carte didiactica( mostenita din clasa Carte)
+    
     9. Revista – clasa ce stocheaza informatii despre o carte comerciala(mostenita din clasa Carte)
     
     
