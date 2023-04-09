@@ -1,4 +1,4 @@
-                                                            Aplicatie de gestiune a unei bibilioteci
+                        Aplicatie de gestiune a unei bibilioteci
 
 
 Tipuri de obiecte:
