@@ -2,30 +2,30 @@ package model;
 import java.time.LocalDate;
 import java.util.*;
 public class Imprumut {
-    private Utilizator utilizator;
+    private String telefon;
     private List<Carte> carti;
     private Date dataImprumut;
     private Date dataScadenta;
     private Date dataRestituire;
 
-    public Imprumut(Utilizator utilizator, List<Carte> carti, Date dataImprumut, Date dataScadenta, Date dataRestituire) {
+    public Imprumut(String telefon, List<Carte> carti, Date dataImprumut, Date dataScadenta, Date dataRestituire) {
         for(int i = 0;i<carti.size();i++) {
             carti.get(i).setImprumutata(true);
-            carti.get(i).setUtilizator(utilizator);
+            carti.get(i).setTelefon(telefon);
         }
-        this.utilizator = utilizator;
+        this.telefon = telefon;
         this.carti = carti;
         this.dataImprumut = dataImprumut;
         this.dataScadenta = dataScadenta;
         this.dataRestituire = dataRestituire;
     }
 
-    public Utilizator getUtilizator() {
-        return utilizator;
+    public String getTelefon() {
+        return telefon;
     }
 
-    public void setUtilizator(Utilizator utilizator) {
-        this.utilizator = utilizator;
+    public void setTelefon(String telefon) {
+        this.telefon = telefon;
     }
 
     public List<Carte> getCarti() {
@@ -63,7 +63,7 @@ public class Imprumut {
     @Override
     public String toString() {
         return "Imprumut{" +
-                "utilizator=" + utilizator +
+                "telefon='" + telefon + '\'' +
                 ", carti=" + carti +
                 ", dataImprumut=" + dataImprumut +
                 ", dataScadenta=" + dataScadenta +

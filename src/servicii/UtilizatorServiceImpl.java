@@ -56,16 +56,9 @@ public class UtilizatorServiceImpl implements UtilizatorService {
     public void imprumutaCarti(List<Carte> carti, String telefon) {
         Utilizator utilizator = getUtilizator(telefon);
         try {
-            if (utilizatori == null)
+            if (utilizator == null)
                 throw new NuExistaUtilizatori("nu exista utilizator");
         } catch (NuExistaUtilizatori ex) {
-            System.out.println(ex.getMessage());
-            return;
-        }
-        try {
-            if (getListaImprumuturi(telefon).size() > 2)
-                throw new NuSePoateImprumuta("nu se poate imprumuta deoarece aveti deja 3 carti imprumutate");
-        } catch (NuSePoateImprumuta ex) {
             System.out.println(ex.getMessage());
             return;
         }
@@ -75,13 +68,15 @@ public class UtilizatorServiceImpl implements UtilizatorService {
                 newList.add(carti.get(i));
         }
         try {
+            if (utilizator.getPermisDeBiblioteca() == null)
+                throw new NuSePoateImprumuta("permisul nu exista");
             if (utilizator.getPermisDeBiblioteca().isValid() == false)
                 throw new NuSePoateImprumuta("permisul nu este valid");
             if (utilizator.getPermisDeBiblioteca().isDreptImprumut() == false)
                 throw new NuSePoateImprumuta("permisul nu are drept de rezervare");
             for (int i = 0; i < carti.size(); i++) {
                 if (carti.get(i).isRezervata())
-                    if (carti.get(i).getUtilizator() != utilizator)
+                    if (carti.get(i).getTelefon().equals(telefon) == false)
                         throw new NuSePoateImprumuta("carte rezervata");
                 if (carti.get(i).isImprumutata())
                     throw new NuSePoateImprumuta("carte imprumutata");
@@ -94,7 +89,7 @@ public class UtilizatorServiceImpl implements UtilizatorService {
         calendar.setTime(actualDate);
         calendar.add(Calendar.MONTH, 1);
         Date oneMonthLater = calendar.getTime();
-        Imprumut imprumut = new Imprumut(utilizator, newList, actualDate, oneMonthLater, null);
+        Imprumut imprumut = new Imprumut(telefon, newList, actualDate, oneMonthLater, null);
         if (utilizator.getImprumuturi() == null)
             utilizator.setImprumuturi(new ArrayList<Imprumut>());
         utilizator.getImprumuturi().add(imprumut);
@@ -120,6 +115,8 @@ public class UtilizatorServiceImpl implements UtilizatorService {
         }
         List<Carte> newList = new ArrayList<Carte>();
         try {
+            if (utilizator.getPermisDeBiblioteca() == null)
+                throw new NuSePoateImprumuta("permisul nu exista");
             if (utilizator.getPermisDeBiblioteca().isValid() == false)
                 throw new NuSePoateRezerva("permisul nu este valid");
             if (utilizator.getPermisDeBiblioteca().isDreptRezervare() == false)
@@ -135,7 +132,7 @@ public class UtilizatorServiceImpl implements UtilizatorService {
             if (carti.get(i).isImprumutata() == false && carti.get(i).isRezervata() == false && bibliotecaService.esteInBiblioteca(carti.get(i).getTitlu()))
                 newList1.add(carti.get(i));
         }
-        Rezervare rezervare = new Rezervare(utilizator, newList1);
+        Rezervare rezervare = new Rezervare( newList1, telefon);
         if (utilizator.getRezervari() == null)
             utilizator.setRezervari(new ArrayList<Rezervare>());
         utilizator.getRezervari().add(rezervare);
@@ -150,13 +147,7 @@ public class UtilizatorServiceImpl implements UtilizatorService {
             System.out.println(ex.getMessage());
             return null;
         }
-        try {
-            if (getListaImprumuturi(telefon).size() > 2)
-                throw new NuSePoateImprumuta("nu se poate imprumuta deoarece aveti deja 3 carti imprumutate");
-        } catch (NuSePoateImprumuta ex) {
-            System.out.println(ex.getMessage());
-            return null;
-        }
+
         List<Rezervare> rezervari = utilizator.getRezervari();
         try {
 
@@ -174,19 +165,13 @@ public class UtilizatorServiceImpl implements UtilizatorService {
     public List<Imprumut> getListaImprumuturi(String telefon) {
         Utilizator utilizator = getUtilizator(telefon);
         try {
-            if (utilizatori == null)
+            if (utilizator == null)
                 throw new NuExistaUtilizatori("nu exista utilizator");
         } catch (NuExistaUtilizatori ex) {
             System.out.println(ex.getMessage());
             return null;
         }
-        try {
-            if (getListaImprumuturi(telefon).size() > 2)
-                throw new NuSePoateImprumuta("nu se poate imprumuta deoarece aveti deja 3 carti imprumutate");
-        } catch (NuSePoateImprumuta ex) {
-            System.out.println(ex.getMessage());
-            return null;
-        }
+
         List<Imprumut> imprumuturi = utilizator.getImprumuturi();
         try {
             if (imprumuturi == null)
@@ -213,7 +198,7 @@ public class UtilizatorServiceImpl implements UtilizatorService {
         calendar.setTime(actualDate);
         calendar.add(Calendar.YEAR, 1);
         Date oneYearLater = calendar.getTime();
-        PermisDeBiblioteca permisDeBiblioteca = new PermisDeBiblioteca(utilizator,true,true,actualDate,oneYearLater,true);
+        PermisDeBiblioteca permisDeBiblioteca = new PermisDeBiblioteca(telefon,true,true,actualDate,oneYearLater,true,true);
         utilizator.setPermisDeBiblioteca(permisDeBiblioteca);
     }
 }

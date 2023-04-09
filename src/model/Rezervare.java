@@ -1,26 +1,19 @@
 package model;
 import java.util.*;
 public class Rezervare {
-    private Utilizator utilizator;
     private List<Carte> carti;
+    private String telefon;
 
 
-    public Rezervare(Utilizator utilizator, List<Carte> carti) {
+    public Rezervare(List<Carte> carti, String telefon) {
         for (int i = 0;i<carti.size();i++) {
             carti.get(i).setRezervata(true);
-            carti.get(i).setUtilizator(utilizator);
+            carti.get(i).setTelefon(telefon);
         }
-        this.utilizator = utilizator;
         this.carti = carti;
+        this.telefon = telefon;
     }
 
-    public Utilizator getUtilizator() {
-        return utilizator;
-    }
-
-    public void setUtilizator(Utilizator utilizator) {
-        this.utilizator = utilizator;
-    }
 
     public List<Carte> getCarti() {
         return carti;
@@ -30,11 +23,19 @@ public class Rezervare {
         this.carti = carti;
     }
 
+    public String getTelefon() {
+        return telefon;
+    }
+
+    public void setTelefon(String telefon) {
+        this.telefon = telefon;
+    }
+
     @Override
     public String toString() {
         return "Rezervare{" +
-                "utilizator=" + utilizator +
-                ", carti=" + carti +
+                "carti=" + carti +
+                ", telefon='" + telefon + '\'' +
                 '}';
     }
 }

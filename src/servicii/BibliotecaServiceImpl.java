@@ -15,7 +15,6 @@ public class BibliotecaServiceImpl implements BibliotecaService {
     Set<Autor> autori;
     Set<Editura> edituri;
 
-    //schimb sa pun si autor si editura
     @Override
     public void addCarte(int tip) {
         Scanner scanner = new Scanner(System.in);
@@ -24,8 +23,8 @@ public class BibliotecaServiceImpl implements BibliotecaService {
             cartiDinBiblioteca = new ArrayList<Carte>();
         switch (tip) {
             case 1:
-                System.out.println("Introduceti date pentru carte");
                 System.out.println("Introduceti datele cartii");
+                System.out.println("Titlu, an,nume autor, nume editura");
                 String titlu = scanner.next();
                 int an = scanner.nextInt();
                 GenCarte genCarte = GenCarte.RAZBOI;
@@ -40,6 +39,7 @@ public class BibliotecaServiceImpl implements BibliotecaService {
                     int luna = rand.nextInt(12) + 1;
                     int zi = rand.nextInt(30) + 1;
                     LocalDate data = LocalDate.of(an2, luna, zi);
+                    System.out.println("Introduceti nationalitatea");
                     String nat = scanner.next();
                     a = new Autor(numeAutor, data, nat);
                     addAutor(numeAutor, data, nat);
@@ -47,6 +47,7 @@ public class BibliotecaServiceImpl implements BibliotecaService {
 
                 if (e == null) {
                     System.out.println("Introduceti datele editurii");
+                    System.out.println("Adresa, nr tel");
                     String adresa = scanner.next();
                     String nrTel = scanner.next();
                     e = new Editura(numeEditura, adresa, nrTel);
@@ -57,10 +58,10 @@ public class BibliotecaServiceImpl implements BibliotecaService {
                 break;
             case 2:
                 GenRevista genRevista = GenRevista.MASINI;
-                System.out.println("Introduceti date pentru carte");
                 System.out.println("Introduceti datele cartii");
+                System.out.println("nr luni valabilitate,Titlu, an,nume autor, nume editura");
                 int nr = scanner.nextInt();
-                String titlu1 = scanner.nextLine();
+                String titlu1 = scanner.next();
                 int an1 = scanner.nextInt();
                 String numeAutor1 = scanner.next();
                 String numeEditura1 = scanner.next();
@@ -71,12 +72,15 @@ public class BibliotecaServiceImpl implements BibliotecaService {
                     int luna = rand.nextInt(12) + 1;
                     int zi = rand.nextInt(30) + 1;
                     LocalDate data = LocalDate.of(an2, luna, zi);
-                    String nat = scanner.nextLine();
+                    System.out.println("Introduceti nationalitatea");
+                    String nat = scanner.next();
                     a1 = new Autor(numeAutor1, data, nat);
                     addAutor(numeAutor1, data, nat);
                 }
 
                 if (e1 == null) {
+                    System.out.println("Introduceti datele editurii");
+                    System.out.println("Adresa, nr tel");
                     String adresa = scanner.next();
                     String nrTel = scanner.next();
                     e1 = new Editura(numeEditura1, adresa, nrTel);
@@ -87,8 +91,8 @@ public class BibliotecaServiceImpl implements BibliotecaService {
                 break;
             case 3:
                 Dificultate dificultate = Dificultate.MEDIE;
-                System.out.println("Introduceti date pentru carte");
                 System.out.println("Introduceti datele cartii");
+                System.out.println("materie,domeniu,Titlu, an,nume autor, nume editura");
                 String materie = scanner.next();
                 String domeniu = scanner.next();
                 String titlu2 = scanner.next();
@@ -102,12 +106,15 @@ public class BibliotecaServiceImpl implements BibliotecaService {
                     int luna = rand.nextInt(12) + 1;
                     int zi = rand.nextInt(30) + 1;
                     LocalDate data = LocalDate.of(an3, luna, zi);
+                    System.out.println("Introduceti nationalitatea");
                     String nat = scanner.next();
                     a2 = new Autor(numeAutor2, data, nat);
                     addAutor(numeAutor2, data, nat);
                 }
 
                 if (e2 == null) {
+                    System.out.println("Introduceti datele editurii");
+                    System.out.println("Adresa, nr tel");
                     String adresa = scanner.next();
                     String nrTel = scanner.next();
                     e2 = new Editura(numeEditura2, adresa, nrTel);

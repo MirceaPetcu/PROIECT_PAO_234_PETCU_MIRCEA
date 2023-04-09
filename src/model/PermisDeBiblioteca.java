@@ -3,7 +3,7 @@ package model;
 import java.util.Date;
 
 public class PermisDeBiblioteca {
-    private Utilizator utilizator;
+    private String telefon;
     private boolean dreptImprumut;
     private boolean dreptRezervare;
     private Date dataInceput;
@@ -11,8 +11,8 @@ public class PermisDeBiblioteca {
     private boolean valid;
     private boolean eStudent;
 
-    public PermisDeBiblioteca(Utilizator utilizator, boolean dreptImprumut, boolean dreptRezervare, Date dataInceput, Date dataExpirare, boolean valid) {
-        this.utilizator = utilizator;
+    public PermisDeBiblioteca(String telefon, boolean dreptImprumut, boolean dreptRezervare, Date dataInceput, Date dataExpirare, boolean valid, boolean eStudent) {
+        this.telefon = telefon;
         this.dreptImprumut = dreptImprumut;
         this.dreptRezervare = dreptRezervare;
         this.dataInceput = dataInceput;
@@ -21,13 +21,6 @@ public class PermisDeBiblioteca {
         this.eStudent = eStudent;
     }
 
-    public Utilizator getUtilizator() {
-        return utilizator;
-    }
-
-    public void setUtilizator(Utilizator utilizator) {
-        this.utilizator = utilizator;
-    }
 
     public boolean isDreptImprumut() {
         return dreptImprumut;
@@ -77,10 +70,18 @@ public class PermisDeBiblioteca {
         this.eStudent = eStudent;
     }
 
+    public String getTelefon() {
+        return telefon;
+    }
+
+    public void setTelefon(String telefon) {
+        this.telefon = telefon;
+    }
+
     @Override
     public String toString() {
         return "PermisDeBiblioteca{" +
-                "utilizator=" + utilizator +
+                "telefon='" + telefon + '\'' +
                 ", dreptImprumut=" + dreptImprumut +
                 ", dreptRezervare=" + dreptRezervare +
                 ", dataInceput=" + dataInceput +

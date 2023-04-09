@@ -1,10 +1,14 @@
 package utile;
 
 import model.Carte;
+import model.Imprumut;
+import model.Rezervare;
 import model.Utilizator;
 import servicii.BibliotecaServiceImpl;
 import servicii.UtilizatorServiceImpl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public final class Meniu {
@@ -66,25 +70,91 @@ public final class Meniu {
                         System.out.println("cartea nu se afla in biblioteca.");
                     break;
                 case "d":
-                    Scanner scanner3 = new Scanner(System.in);
-                    String nume = scanner3.next();
-                    String adresa = scanner3.next();
-                    String nrTelefon = scanner3.next();
-                    utilizatorService.addUtilizator(new Utilizator(nume, adresa, nrTelefon, null, null, null));
+                    System.out.println("introduceti numele, adresa si numarul de telefon al utilizatorului.");
+                    String nume = scanner.next();
+                    String adresa = scanner.next();
+                    String nrTelefon = scanner.next();
+                    utilizatorService.addUtilizator(new Utilizator(nume, adresa, nrTelefon, null, new ArrayList<>(), new ArrayList<>()));
                     break;
                 case "e":
-                    break;
-                case "f":
+                    System.out.println("introduceti numarul de telefon al utilizatorului pentru care doriti sa creati card.");
+                    String telefon = scanner.next();
+                    try {
+
+                        utilizatorService.crearePermisDeBiblioteca(telefon);
+                    }
+                    catch (Exception exception)
+                    {
+                        System.out.println("nu a reusit creearea permisului de biblioteca.");
+                    }
                     break;
                 case "g":
+                    System.out.println("introduceti numarul de telefon al utilizatorului care doreste sa imprumute carti.");
+                    telefon = scanner.next();
+                    List<Carte> carti = new ArrayList<Carte>();
+                    System.out.println("Cate carti doriti sa imprumutati?");
+                    int nrCarti = scanner.nextInt();
+                    System.out.println("Introduceti numele cartilor care se vor imprumuta, pe rand.");
+                    for(int i = 0;i<nrCarti;i++)
+                    {
+                        numeCarte = scanner.next();
+                        carti.add(biblioteca.gasesteCarteDupaNume(numeCarte));
+                    }
+                    utilizatorService.imprumutaCarti(carti,telefon);
+                    break;
+                case "f":
+                    System.out.println("introduceti numarul de telefon al utilizatorului care doreste sa rezerve carti.");
+                    telefon = scanner.next();
+                    carti = new ArrayList<Carte>();
+                    System.out.println("Cate carti doriti sa rezervati?");
+                    nrCarti = scanner.nextInt();
+                    System.out.println("Introduceti numele cartilor care se vor rezerva, pe rand.");
+                    for(int i = 0;i<nrCarti;i++)
+                    {
+                        numeCarte = scanner.next();
+                        carti.add(biblioteca.gasesteCarteDupaNume(numeCarte));
+                    }
+                    utilizatorService.rezervaCarti(carti,telefon);
                     break;
                 case "h":
+                    System.out.println("introduceti numarul de telefon al utilizatorului care doreste sa vizualizeze cartile rezervate.");
+                    telefon = scanner.next();
+                    System.out.println("cartile rezervate: ");
+                    for(Rezervare rezervare: utilizatorService.getListaRezervari(telefon))
+                        for (Carte carte : rezervare.getCarti())
+                            System.out.println(carte);
                     break;
                 case "i":
-                    break;
-                case "k":
+                    System.out.println("introduceti numarul de telefon al utilizatorului care doreste sa vizualizeze istoricul cartilor imprumutates.");
+                    telefon = scanner.next();
+                    System.out.println("cartile rezervate: ");
+                    for(Imprumut imprumut: utilizatorService.getListaImprumuturi(telefon))
+                        for (Carte carte : imprumut.getCarti())
+                            System.out.println(carte);
                     break;
                 case "l":
+                    System.out.println("introduceti numele editurii pentru care doriti sa gasiti cartile.");
+                    String numeEditura = scanner.next();
+                    System.out.println("cartile sunt: ");
+                    for (Carte carte : biblioteca.getCarti())
+                    {
+                        if(carte.getEditura().getNume().equals(numeEditura))
+                            System.out.println(carte);
+                    }
+                    break;
+                case "j":
+                    System.out.println("utilizatorii sunt: ");
+                    System.out.println(utilizatorService.getUtilizatori());
+                    break;
+                case "k":
+                    System.out.println("introduceti numele autorului pentru care doriti sa gasiti cartile.");
+                    String numeAutor = scanner.next();
+                    System.out.println("cartile sunt: ");
+                    for (Carte carte : biblioteca.getCarti())
+                    {
+                        if(carte.getAutor().getNume().equals(numeAutor))
+                            System.out.println(carte);
+                    }
                     break;
                 case "x":
                     break;

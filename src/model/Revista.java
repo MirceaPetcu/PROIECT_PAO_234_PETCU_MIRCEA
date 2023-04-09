@@ -10,8 +10,8 @@ public class Revista extends Carte{
     private GenRevista genRevista;
     private int nrLuniValabilitate;
 
-    public Revista(String titlu, Autor autor, Editura editura, GenCarte gen, int anPublicatie, TipCarte tipCarte, boolean rezervata, Utilizator utilizator, boolean imprumutata, GenRevista genRevista, int nrLuniValabilitate) {
-        super(titlu, autor, editura, gen, anPublicatie, tipCarte, rezervata, utilizator, imprumutata);
+    public Revista(String titlu, Autor autor, Editura editura, GenCarte gen, int anPublicatie, TipCarte tipCarte, boolean rezervata, String telefon, boolean imprumutata, GenRevista genRevista, int nrLuniValabilitate) {
+        super(titlu, autor, editura, gen, anPublicatie, tipCarte, rezervata, telefon, imprumutata);
         this.genRevista = genRevista;
         this.nrLuniValabilitate = nrLuniValabilitate;
     }

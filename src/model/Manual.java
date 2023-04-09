@@ -11,8 +11,8 @@ public class Manual extends Carte{
     private String domeniu;
     private Dificultate dificultate;
 
-    public Manual(String titlu, Autor autor, Editura editura, GenCarte gen, int anPublicatie, TipCarte tipCarte, boolean rezervata, Utilizator utilizator, boolean imprumutata, String materie, String domeniu, Dificultate dificultate) {
-        super(titlu, autor, editura, gen, anPublicatie, tipCarte, rezervata, utilizator, imprumutata);
+    public Manual(String titlu, Autor autor, Editura editura, GenCarte gen, int anPublicatie, TipCarte tipCarte, boolean rezervata, String telefon, boolean imprumutata, String materie, String domeniu, Dificultate dificultate) {
+        super(titlu, autor, editura, gen, anPublicatie, tipCarte, rezervata, telefon, imprumutata);
         this.materie = materie;
         this.domeniu = domeniu;
         this.dificultate = dificultate;

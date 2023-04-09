@@ -13,10 +13,10 @@ public class Carte {
     private int anPublicatie;
     private TipCarte tipCarte;
     protected boolean rezervata;
-    protected Utilizator utilizator;
+    protected String telefon;
     protected boolean imprumutata;
 
-    public Carte(String titlu, Autor autor, Editura editura, GenCarte gen, int anPublicatie, TipCarte tipCarte, boolean rezervata, Utilizator utilizator, boolean imprumutata) {
+    public Carte(String titlu, Autor autor, Editura editura, GenCarte gen, int anPublicatie, TipCarte tipCarte, boolean rezervata, String telefon, boolean imprumutata) {
         this.titlu = titlu;
         this.autor = autor;
         this.editura = editura;
@@ -24,7 +24,7 @@ public class Carte {
         this.anPublicatie = anPublicatie;
         this.tipCarte = tipCarte;
         this.rezervata = rezervata;
-        this.utilizator = utilizator;
+        this.telefon = telefon;
         this.imprumutata = imprumutata;
     }
 
@@ -36,14 +36,13 @@ public class Carte {
         this.imprumutata = imprumutata;
     }
 
-    public Utilizator getUtilizator() {
-        return utilizator;
+    public String getTelefon() {
+        return telefon;
     }
 
-    public void setUtilizator(Utilizator utilizator) {
-        this.utilizator = utilizator;
+    public void setTelefon(String telefon) {
+        this.telefon = telefon;
     }
-
     public boolean isRezervata() {
         return rezervata;
     }
@@ -112,7 +111,7 @@ public class Carte {
                 ", anPublicatie=" + anPublicatie +
                 ", tipCarte=" + tipCarte +
                 ", rezervata=" + rezervata +
-                ", utilizator=" + utilizator +
+                ", telefon='" + telefon + '\'' +
                 ", imprumutata=" + imprumutata +
                 '}';
     }
