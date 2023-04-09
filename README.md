@@ -2,6 +2,7 @@
 
 
 Tipuri de obiecte:
+
     1. Carte- clasa folosita pentru stocarea informatiilor despre carti
     
     2. Utilizator – informatii despre cititorul care urmeaza sa imprumute carti
