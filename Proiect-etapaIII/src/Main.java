@@ -67,7 +67,23 @@ public class Main {
                 System.out.println("13. Afiseaza toate permisele de biblioteca.(Tasta m)");
                 System.out.println("14. Afiseaza toti autorii.(Tasta n)");
                 System.out.println("15. Afiseaza toate editurile.(Tasta o)");
-                System.out.println("16. Iesire.(Tasta x)");
+                System.out.println("16. Setup baza de date.(Tasta p)");
+                System.out.println("17. Insereaza editura in baza de date (Tasta q)");
+                System.out.println("18. Modifica editura in baza de date (Tasta s)");
+                System.out.println("19. Sterge editura din baza de date (Tasta t)");
+                System.out.println("20. Afiseaza editura dupa nume din baza de date (Tasta r)");
+                System.out.println("21. Insereaza autor in baza de date (Tasta u)");
+                System.out.println("22. Modifica autor in baza de date (Tasta w)");
+                System.out.println("23. Sterge autor din baza de date (Tasta y)");
+                System.out.println("24. Afiseaza autor dupa nume din baza de date (Tasta v)");
+                System.out.println("25. Insereaza carte in baza de date (Tasta z)");
+                System.out.println("26. Afiseaza cartea dupa titlu din baza de date (Tasta aa)");
+                System.out.println("27. Modifica carte in baza de date (Tasta bb)");
+                System.out.println("28. Sterge carte din baza de date (Tasta cc)");
+                System.out.println("29. Insereaza permis de biblioteca in baza de date (Tasta dd)");
+                System.out.println("30. Afiseaza permisul de biblioteca dupa telefonul cititorului din baza de date (Tasta ee)");
+                System.out.println("31. Modifica permis de biblioteca in baza de date (Tasta ff)");
+                System.out.println("32. Sterge permis de biblioteca din baza de date (Tasta gg)");
 
 
                 choice = scanner.next();

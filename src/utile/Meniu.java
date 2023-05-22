@@ -54,8 +54,10 @@ public final class Meniu {
                     biblioteca.addCarte(tip);
                     break;
                 case "b":
-                    if (biblioteca.getCarti() != null)
+                    if (biblioteca.getCarti() != null) {
+                        biblioteca.sortCarti();
                         System.out.println(biblioteca.getCarti());
+                    }
                     else {
                         System.out.println("Nu exista carti in biblioteca");
                     }

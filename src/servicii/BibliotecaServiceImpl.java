@@ -206,4 +206,12 @@ public class BibliotecaServiceImpl implements BibliotecaService {
                 e = editura;
         return e;
     }
+    Comparator<Carte> comparatorTitlu = new Comparator<Carte>() {
+        public int compare(Carte carte1, Carte carte2) {
+            return carte1.getTitlu().compareTo(carte2.getTitlu());
+        }
+    };
+    public void sortCarti(){
+        Collections.sort(this.cartiDinBiblioteca, comparatorTitlu);
+    }
 }

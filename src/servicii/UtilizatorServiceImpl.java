@@ -66,6 +66,8 @@ public class UtilizatorServiceImpl implements UtilizatorService {
         for (int i = 0; i < carti.size(); i++) {
             if (carti.get(i).isImprumutata() == false && carti.get(i).isRezervata() == false && bibliotecaService.esteInBiblioteca(carti.get(i).getTitlu()))
                 newList.add(carti.get(i));
+            if (carti.get(i).isRezervata() == true && carti.get(i).getTelefon().equals(telefon))
+                newList.add(carti.get(i));
         }
         try {
             if (utilizator.getPermisDeBiblioteca() == null)
